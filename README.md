@@ -43,8 +43,7 @@ docu3c-depo-index-engine/
 │   ├── indexer.py                    # SentenceTransformer embeddings & ChromaDB indexing
 │   ├── segmenter.py                  # Chronological topic segmentation & line provenance
 │   ├── exporter.py                   # Attorney Markdown report exporter
-│   ├── validator.py                  # 3-run stability runner & validation report compiler
-│   └── evaluator_table.py            # Console utility for 20-entry audit table
+│   └── validator.py                  # 3-run stability runner & validation report compiler
 │
 ├── app.py                            # Interactive Streamlit application (Topic Explorer & Semantic Search)
 ├── main.py                           # End-to-end pipeline automation runner

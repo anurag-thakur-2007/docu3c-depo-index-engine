@@ -111,13 +111,11 @@ The pipeline will:
 11. Run three stability test executions.
 12. Generate the validation and manual review report.
 
-All generated artifacts and databases are stored inside the:
+All generated artifacts and databases are stored inside:
 
 ```text
 ./outputs/
 ```
-
-directory.
 
 ---
 
@@ -333,12 +331,12 @@ The resulting evaluation is incorporated into:
 
 ## Engineering Discipline & Git History
 
-The project was developed incrementally to maintain clear engineering evolution.
+The project was developed incrementally to maintain clear engineering evolution and demonstrate the progression from the foundational RAG pipeline to the final validated topic-indexing system.
 
 ### Earlier Reference Commit
 
 ```text
-[Insert Earlier Commit SHA Here]
+7023086
 ```
 
 The earlier version implemented the foundational components:
@@ -351,15 +349,15 @@ The earlier version implemented the foundational components:
 ### Final Submission Commit
 
 ```text
-[Insert Final Commit SHA Here]
+5429c1b
 ```
 
 The final version integrated:
 
 * Chronological topic boundary segmentation
 * Topic index generation
-* Markdown exporting
 * JSON exporting
+* Markdown exporting
 * Three-run automated stability testing
 * 20-entry manual validation review
 * Failure analysis reporting
@@ -367,7 +365,7 @@ The final version integrated:
 ### Commit Evolution Summary
 
 ```text
-Earlier Commit
+Earlier Commit: 7023086
       │
       ├── PDF extraction
       ├── Text cleaning
@@ -375,7 +373,7 @@ Earlier Commit
       └── ChromaDB indexing
       │
       ▼
-Final Commit
+Final Commit: 5429c1b
       │
       ├── Topic segmentation
       ├── Chronological indexing

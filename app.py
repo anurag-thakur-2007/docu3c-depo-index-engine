@@ -16,118 +16,153 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# Custom Clean Legal-Tech CSS (Light Theme, Mobile Responsive, Handcrafted feel)
+# Custom Styling: Light Blue Tint Theme + Modern Nav Bar (Myntra-style) + Mobile Responsive
 st.markdown("""
 <style>
-    /* Global Styles */
+    /* Global Soft Light Blue Background */
     body, .stApp {
-        background-color: #f8fafc;
-        color: #1e293b;
+        background: linear-gradient(180deg, #eaf2fb 0%, #f1f6fc 100%) !important;
+        color: #0f172a;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
 
-    /* Container Spacing */
+    /* Main Container */
     .block-container {
-        padding-top: 1.5rem;
+        padding-top: 1.25rem;
         padding-bottom: 3rem;
-        padding-left: 1.2rem;
-        padding-right: 1.2rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
         max-width: 1200px;
     }
 
-    /* Clean Header Card */
-    .depo-header {
+    /* Brand Header Banner */
+    .brand-header {
         background: #ffffff;
-        border: 1px solid #e2e8f0;
+        border: 1px solid #dbeafe;
         border-radius: 12px;
-        padding: 1.25rem 1.5rem;
-        margin-bottom: 1.5rem;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        padding: 1.15rem 1.5rem;
+        margin-bottom: 1.25rem;
+        box-shadow: 0 2px 8px rgba(37, 99, 235, 0.05);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.75rem;
     }
-    .depo-title {
-        font-size: 1.5rem;
+    .brand-logo-title {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+    }
+    .brand-logo-icon {
+        background: #eff6ff;
+        border: 1px solid #bfdbfe;
+        color: #2563eb;
+        font-size: 1.35rem;
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+    }
+    .brand-title-text {
+        font-size: 1.35rem;
         font-weight: 700;
         color: #0f172a;
-        margin-bottom: 0.25rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
+        letter-spacing: -0.01em;
+        line-height: 1.2;
     }
-    .depo-subtitle {
-        font-size: 0.92rem;
+    .brand-subtext {
+        font-size: 0.82rem;
         color: #64748b;
-        margin-bottom: 0.75rem;
     }
-    .depo-meta-row {
+    .meta-pills {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.5rem;
-        align-items: center;
+        gap: 0.4rem;
     }
-    .meta-tag {
-        background: #f1f5f9;
-        color: #334155;
-        border: 1px solid #e2e8f0;
+    .meta-pill {
+        background: #f0f7ff;
+        border: 1px solid #cfe5fc;
+        color: #1e40af;
         border-radius: 6px;
-        padding: 0.2rem 0.55rem;
-        font-size: 0.78rem;
-        font-weight: 500;
-    }
-    .meta-tag-blue {
-        background: #eff6ff;
-        color: #1d4ed8;
-        border: 1px solid #bfdbfe;
-        border-radius: 6px;
-        padding: 0.2rem 0.55rem;
-        font-size: 0.78rem;
+        padding: 0.22rem 0.6rem;
+        font-size: 0.75rem;
         font-weight: 600;
     }
 
-    /* Navigation Pill Styling */
-    div[data-testid="stHorizontalBlock"] > div {
-        align-items: center;
+    /* Navigation Bar (Clean Myntra-style Top Tab Bar) */
+    div[data-testid="stTabs"] {
+        background: #ffffff !important;
+        border: 1px solid #dbeafe !important;
+        border-radius: 10px !important;
+        padding: 0.1rem 1rem 0 1rem !important;
+        margin-bottom: 1.5rem !important;
+        box-shadow: 0 2px 6px rgba(37, 99, 235, 0.04) !important;
     }
-    .nav-container {
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 10px;
-        padding: 0.4rem;
-        margin-bottom: 1.5rem;
-        box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    div[data-testid="stTabs"] div[data-baseweb="tab-list"] {
+        gap: 1.75rem !important;
+        background: transparent !important;
+        border-bottom: none !important;
+        overflow-x: auto !important;
+        white-space: nowrap !important;
+        -webkit-overflow-scrolling: touch;
+    }
+    div[data-testid="stTabs"] button[data-testid="stTab"] {
+        font-size: 0.86rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.04em !important;
+        text-transform: uppercase !important;
+        color: #64748b !important;
+        padding: 0.85rem 0.5rem !important;
+        border: none !important;
+        border-bottom: 3px solid transparent !important;
+        background: transparent !important;
+        transition: color 0.15s ease, border-color 0.15s ease !important;
+    }
+    div[data-testid="stTabs"] button[data-testid="stTab"]:hover {
+        color: #2563eb !important;
+    }
+    div[data-testid="stTabs"] button[data-testid="stTab"][aria-selected="true"] {
+        color: #1d4ed8 !important;
+        border-bottom: 3px solid #2563eb !important;
     }
 
     /* Topic Cards */
     .topic-card {
         background: #ffffff;
-        border: 1px solid #e2e8f0;
+        border: 1px solid #dbeafe;
         border-radius: 10px;
-        padding: 1rem 1.25rem;
+        padding: 1.1rem 1.35rem;
         margin-bottom: 0.85rem;
-        transition: border-color 0.15s ease, box-shadow 0.15s ease;
+        box-shadow: 0 1px 3px rgba(37, 99, 235, 0.03);
+        transition: transform 0.1s ease, box-shadow 0.15s ease, border-color 0.15s ease;
     }
     .topic-card:hover {
-        border-color: #cbd5e1;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+        border-color: #93c5fd;
+        box-shadow: 0 3px 10px rgba(37, 99, 235, 0.08);
     }
     .topic-header-row {
         display: flex;
         justify-content: space-between;
-        align-items: flex-start;
+        align-items: center;
         flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 0.6rem;
+        gap: 0.6rem;
+        margin-bottom: 0.65rem;
     }
-    .topic-name {
+    .topic-title {
         font-size: 1.05rem;
-        font-weight: 600;
+        font-weight: 700;
         color: #0f172a;
     }
-    .loc-badge {
-        background: #f8fafc;
-        border: 1px solid #cbd5e1;
-        color: #334155;
+    .location-badge {
+        background: #f0f7ff;
+        border: 1px solid #bfdbfe;
+        color: #1d4ed8;
         border-radius: 6px;
-        padding: 0.2rem 0.6rem;
+        padding: 0.22rem 0.65rem;
         font-size: 0.82rem;
         font-weight: 600;
         font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
@@ -136,55 +171,56 @@ st.markdown("""
     .quote-box {
         background: #f8fafc;
         border-left: 3px solid #3b82f6;
-        padding: 0.65rem 0.9rem;
+        padding: 0.65rem 0.95rem;
         border-radius: 0 6px 6px 0;
         font-size: 0.88rem;
         color: #334155;
-        line-height: 1.45;
+        line-height: 1.5;
         font-style: italic;
     }
 
-    /* Search Match Card */
-    .search-result-card {
+    /* Search Result Card */
+    .search-card {
         background: #ffffff;
-        border: 1px solid #e2e8f0;
+        border: 1px solid #dbeafe;
         border-radius: 10px;
-        padding: 1rem 1.25rem;
+        padding: 1.15rem 1.35rem;
         margin-bottom: 1rem;
+        box-shadow: 0 1px 4px rgba(37, 99, 235, 0.04);
     }
     .score-badge {
         background: #ecfdf5;
-        color: #047857;
         border: 1px solid #a7f3d0;
+        color: #047857;
         border-radius: 6px;
-        padding: 0.15rem 0.5rem;
+        padding: 0.18rem 0.55rem;
         font-size: 0.78rem;
-        font-weight: 600;
+        font-weight: 700;
     }
 
-    /* Mobile Responsive Media Queries */
+    /* Mobile Responsive Optimizations */
     @media (max-width: 768px) {
         .block-container {
-            padding-left: 0.75rem;
-            padding-right: 0.75rem;
-            padding-top: 1rem;
+            padding-left: 0.8rem !important;
+            padding-right: 0.8rem !important;
+            padding-top: 0.8rem !important;
         }
-        .depo-header {
-            padding: 1rem;
+        .brand-header {
+            padding: 0.9rem 1rem;
         }
-        .depo-title {
-            font-size: 1.25rem;
+        .brand-title-text {
+            font-size: 1.15rem;
         }
         .topic-header-row {
             flex-direction: column;
             align-items: flex-start;
         }
-        .loc-badge {
+        .location-badge {
             font-size: 0.76rem;
         }
         .quote-box {
             font-size: 0.82rem;
-            padding: 0.5rem 0.75rem;
+            padding: 0.55rem 0.75rem;
         }
     }
 </style>
@@ -196,9 +232,8 @@ def get_embedder():
     from sentence_transformers import SentenceTransformer
     return SentenceTransformer("all-MiniLM-L6-v2")
 
-# Verify outputs exist
+# Paths
 index_path = "outputs/topic_index.json"
-report_path = "outputs/topic_index_report.md"
 validation_path = "outputs/validation_report.md"
 chroma_dir = "outputs/chroma_db"
 
@@ -215,58 +250,59 @@ if not os.path.exists(index_path):
 with open(index_path, "r", encoding="utf-8") as f:
     topics = json.load(f)
 
-# --- Header Section ---
+# --- Top Brand Header Banner ---
 st.markdown("""
-<div class="depo-header">
-    <div class="depo-title">DepoIndex: Deposition Topic Workbench</div>
-    <div class="depo-subtitle">Matter: <strong>Heather Turrey vs. Vervent, Inc.</strong> &nbsp;|&nbsp; Deposition of <strong>Persis Yu</strong> (March 28, 2023)</div>
-    <div class="depo-meta-row">
-        <span class="meta-tag-blue">21 Topics Indexed</span>
-        <span class="meta-tag">Pages 7–88 Substantive Testimony</span>
-        <span class="meta-tag">2,032 Verified Lines</span>
-        <span class="meta-tag">Exact 1–25 Line Provenance</span>
-        <span class="meta-tag">Offline Vector Store</span>
+<div class="brand-header">
+    <div class="brand-logo-title">
+        <div class="brand-logo-icon">⚖️</div>
+        <div>
+            <div class="brand-title-text">DepoIndex &nbsp;<span style="font-weight: 400; font-size: 0.95rem; color: #64748b;">| Deposition Topic Workbench</span></div>
+            <div class="brand-subtext">Matter: <strong>Heather Turrey vs. Vervent, Inc.</strong> &nbsp;·&nbsp; Witness: <strong>Persis Yu</strong> (March 28, 2023)</div>
+        </div>
+    </div>
+    <div class="meta-pills">
+        <span class="meta-pill">21 Topics</span>
+        <span class="meta-pill">Pages 7–88 Testimony</span>
+        <span class="meta-pill">2,032 Lines</span>
+        <span class="meta-pill">Lines 1–25 Provenance</span>
     </div>
 </div>
 """, unsafe_allow_html=True)
 
-# --- Navigation Bar ---
-nav_choice = st.radio(
-    "Navigation",
-    ["📋 Topic Index", "🔍 Semantic Search", "📊 Validation Report", "ℹ️ About Architecture"],
-    horizontal=True,
-    label_visibility="collapsed"
-)
+# --- Modern Navigation Bar (Tabs formatted like Myntra navigation) ---
+tab_topics, tab_search, tab_audit, tab_arch = st.tabs([
+    "TOPIC INDEX",
+    "SEMANTIC SEARCH",
+    "VALIDATION AUDIT",
+    "ARCHITECTURE"
+])
 
 # -------------------------------------------------------------
-# VIEW 1: Chronological Topic Index
+# TAB 1: TOPIC INDEX
 # -------------------------------------------------------------
-if nav_choice == "📋 Topic Index":
-    st.markdown("### Chronological Topic Index")
-    st.caption("Ordered timeline of all 21 substantive legal subjects examined during the deposition.")
-
-    col_search, col_stats = st.columns([3, 1])
-    with col_search:
-        filter_text = st.text_input(
+with tab_topics:
+    col_hdr, col_flt = st.columns([2, 1])
+    with col_hdr:
+        st.markdown("<h3 style='margin-bottom: 2px; color: #0f172a;'>Chronological Deposition Topics</h3>", unsafe_allow_html=True)
+        st.caption(f"21 chronological legal topics identified across the 82 pages of substantive examination.")
+    with col_flt:
+        search_kw = st.text_input(
             "Filter topics:",
-            placeholder="Type keyword (e.g. PEAKS, CFPB, default, servicer, California)...",
+            placeholder="Filter by keyword (e.g. PEAKS, CFPB, default, servicer)...",
             label_visibility="collapsed"
         )
-    with col_stats:
-        active_count = len([t for t in topics if filter_text.lower() in t["topic"].lower() or filter_text.lower() in t["supporting_evidence"].lower()]) if filter_text else len(topics)
-        st.markdown(f"<div style='text-align: right; padding-top: 8px; font-size: 0.88rem; color: #64748b;'>Showing <strong>{active_count}</strong> of {len(topics)} topics</div>", unsafe_allow_html=True)
 
-    displayed_topics = [
+    filtered_topics = [
         (idx + 1, item) for idx, item in enumerate(topics)
-        if not filter_text or (filter_text.lower() in item["topic"].lower() or filter_text.lower() in item["supporting_evidence"].lower())
+        if not search_kw or (search_kw.lower() in item["topic"].lower() or search_kw.lower() in item["supporting_evidence"].lower())
     ]
 
-    for item_num, item in displayed_topics:
+    for item_num, item in filtered_topics:
         st.markdown(f"""
         <div class="topic-card">
             <div class="topic-header-row">
-                <div class="topic-name">{item_num}. {item['topic']}</div>
-                <div class="loc-badge">{item['start_location']} &nbsp;→&nbsp; {item['end_location']}</div>
+                <div class="topic-title">{item_num}. {item['topic']}</div>
+                <div class="location-badge">{item['start_location']} &nbsp;→&nbsp; {item['end_location']}</div>
             </div>
             <div class="quote-box">
                 "{item['supporting_evidence']}"
@@ -275,14 +311,13 @@ if nav_choice == "📋 Topic Index":
         """, unsafe_allow_html=True)
 
 # -------------------------------------------------------------
-# VIEW 2: Semantic Topic Search (Bonus Feature)
+# TAB 2: SEMANTIC SEARCH (Bonus Feature)
 # -------------------------------------------------------------
-elif nav_choice == "🔍 Semantic Search":
-    st.markdown("### Semantic Deposition Search")
-    st.caption("Query legal concepts in natural language without requiring exact verbatim keywords.")
+with tab_search:
+    st.markdown("<h3 style='margin-bottom: 2px; color: #0f172a;'>Semantic Deposition Search</h3>", unsafe_allow_html=True)
+    st.caption("Search concepts in natural language without requiring exact verbatim keywords.")
 
-    # Search suggestions
-    st.markdown("<span style='font-size: 0.8rem; color: #64748b;'>Quick suggestions:</span>", unsafe_allow_html=True)
+    st.markdown("<span style='font-size: 0.8rem; color: #475569; font-weight: 600;'>SUGGESTED QUERIES:</span>", unsafe_allow_html=True)
     chip_cols = st.columns(4)
     selected_query = ""
     with chip_cols[0]:
@@ -292,21 +327,22 @@ elif nav_choice == "🔍 Semantic Search":
         if st.button("PEAKS default rates", use_container_width=True):
             selected_query = "high borrower default rates on PEAKS loans"
     with chip_cols[2]:
-        if st.button("California servicing act", use_container_width=True):
+        if st.button("California Servicing Act", use_container_width=True):
             selected_query = "California Student Loan Servicing Act disclosures"
     with chip_cols[3]:
         if st.button("Missing loan notes", use_container_width=True):
             selected_query = "missing promissory notes and chain of title"
 
     user_query = st.text_input(
-        "Enter legal query or factual issue:",
+        "Enter legal query:",
         value=selected_query,
-        placeholder="e.g., standard of care for loan servicers when loans are tainted by fraud"
+        placeholder="e.g. servicer due diligence obligations when loans lack required disclosures",
+        label_visibility="collapsed"
     )
 
     if user_query:
         try:
-            with st.spinner("Searching local vector database..."):
+            with st.spinner("Searching deposition embeddings in local ChromaDB..."):
                 client = chromadb.PersistentClient(path=chroma_dir)
                 col = client.get_collection(name="deposition_blocks")
                 embedder = get_embedder()
@@ -314,7 +350,7 @@ elif nav_choice == "🔍 Semantic Search":
 
                 results = col.query(query_embeddings=q_emb, n_results=4)
 
-            st.markdown(f"#### Relevant Testimony Matches for: *\"{user_query}\"*")
+            st.markdown(f"#### Top Matches for: *\"{user_query}\"*")
             
             for idx in range(len(results["ids"][0])):
                 meta = results["metadatas"][0][idx]
@@ -323,13 +359,13 @@ elif nav_choice == "🔍 Semantic Search":
                 sim_pct = int((1.0 - (dist / 2.0)) * 100) if dist is not None else 88
 
                 st.markdown(f"""
-                <div class="search-result-card">
+                <div class="search-card">
                     <div class="topic-header-row">
                         <div>
-                            <strong>Result #{idx + 1}</strong> &nbsp;
+                            <strong>Match #{idx + 1}</strong> &nbsp;
                             <span class="score-badge">Relevance: ~{sim_pct}%</span>
                         </div>
-                        <div class="loc-badge">{meta['location']}</div>
+                        <div class="location-badge">{meta['location']}</div>
                     </div>
                     <div class="quote-box" style="border-left-color: #10b981;">
                         "{doc_text}"
@@ -341,11 +377,11 @@ elif nav_choice == "🔍 Semantic Search":
             st.error(f"Search query error: {e}")
 
 # -------------------------------------------------------------
-# VIEW 3: Validation & Stability Report
+# TAB 3: VALIDATION AUDIT
 # -------------------------------------------------------------
-elif nav_choice == "📊 Validation Report":
-    st.markdown("### Validation, Stability & Manual Audit Report")
-    st.caption("3-run stability testing and 20-entry manual evaluation audit against the primary transcript.")
+with tab_audit:
+    st.markdown("<h3 style='margin-bottom: 2px; color: #0f172a;'>Validation & Stability Audit</h3>", unsafe_allow_html=True)
+    st.caption("Automated 3-run stability testing and 20-entry manual verification against primary PDF.")
     
     if os.path.exists(validation_path):
         with open(validation_path, "r", encoding="utf-8") as f:
@@ -354,10 +390,10 @@ elif nav_choice == "📊 Validation Report":
         st.info("Validation report file not found.")
 
 # -------------------------------------------------------------
-# VIEW 4: Architecture
+# TAB 4: ARCHITECTURE
 # -------------------------------------------------------------
-elif nav_choice == "ℹ️ About Architecture":
-    st.markdown("### Engineering Methodology & Provenance Guarantee")
+with tab_arch:
+    st.markdown("<h3 style='margin-bottom: 2px; color: #0f172a;'>Architecture & Provenance Standards</h3>", unsafe_allow_html=True)
     st.markdown("""
     #### 1. True Line-Level Provenance
     - Deposition transcripts strictly format exactly 25 numbered lines per page.

@@ -1,27 +1,15 @@
-# DepoIndex: AI-Powered Deposition Topic Index Engine
+# DepoIndex: Deposition Topic Index & Analysis Engine
 
-DepoIndex is a professional-grade, locally running **RAG-based pipeline** engineered to solve **Problem #3** of the Docu3C technical assessment.
-
-It ingests complex legal deposition transcripts, segments them chronologically into meaningful legal topics, preserves strict page/line source provenance, and outputs both structured JSON indexes and human-readable Markdown reports alongside automated validation and stability test reports.
+DepoIndex is a local Python pipeline built to ingest legal deposition transcripts, process text through a modular architecture, and output structured JSON indexes alongside attorney-facing Markdown reports and stability/validation testing artifacts.
 
 ---
 
 ## Key Features
 
-* **Local-First Architecture**
-  Runs entirely offline using local vector embeddings with `sentence-transformers/all-MiniLM-L6-v2` and persistent vector storage using `ChromaDB`. This removes the need for paid API keys or complex cloud deployments.
-
-* **Strict Source Provenance**
-  Maintains exact page and line addressability from raw PDF extraction through chunking and topic indexing, allowing attorneys to verify every entry against the original testimony.
-
-* **Automated Stability & Validation Testing**
-  Includes built-in three-run stability testing and a 20-entry manual review evaluation to assess reliability, consistency, and deterministic outputs.
-
-* **Dual-Format Exporter**
-  Automatically generates:
-
-  * Machine-readable JSON: `topic_index.json`
-  * Human-readable Markdown: `topic_index_report.md`
+* **Local-First Architecture**: Runs offline using local sentence embeddings (`sentence-transformers/all-MiniLM-L6-v2`) and persistent vector storage via `ChromaDB`, avoiding external API key dependencies.
+* **Modular Pipeline Design**: Separates concerns into dedicated modules for parsing (`parser.py`), indexing (`indexer.py`), segmentation (`segmenter.py`), reporting (`exporter.py`), and validation (`validator.py`).
+* **Dual-Format Exporter**: Automatically generates machine-readable JSON indexes (`topic_index.json`) and human-readable Markdown reports (`topic_index_report.md`).
+* **Automated Stability Testing**: Includes validation runners and evaluation reporting to test pipeline output consistency.
 
 ---
 
@@ -35,12 +23,12 @@ docu3c-depo-index-engine/
 │
 ├── outputs/
 │   ├── chroma_db/                    # Local persistent ChromaDB vector store
-│   ├── topic_index.json              # Final chronological Topic Index
-│   ├── topic_index_report.md         # Human-readable attorney report
+│   ├── topic_index.json              # Final chronological Topic Index (JSON)
+│   ├── topic_index_report.md         # Human-readable attorney report (Markdown)
 │   ├── topic_index_run_1.json        # Stability test run 1 output
 │   ├── topic_index_run_2.json        # Stability test run 2 output
 │   ├── topic_index_run_3.json        # Stability test run 3 output
-│   └── validation_report.md          # Stability & validation report
+│   └── validation_report.md          # Stability & evaluation report
 │
 ├── src/
 │   ├── __init__.py                   # Python package initializer
@@ -49,29 +37,23 @@ docu3c-depo-index-engine/
 │   ├── segmenter.py                  # Chronological topic boundary detection
 │   ├── exporter.py                   # Markdown report exporter
 │   ├── validator.py                  # Stability testing & failure analysis
-│   └── evaluator_table.py             # 20-entry manual review table generator
+│   └── evaluator_table.py            # Evaluation table generator
 │
 ├── main.py                            # End-to-end pipeline automation runner
-├── requirements.txt                   # Python dependencies
-├── llm_usage.md                       # AI tools, prompts, and validation documentation
-└── README.md                          # Project documentation
+├── requirements.txt                  # Python dependencies
+├── llm_usage.md                      # AI tooling documentation
+└── README.md                         # Project documentation
 ```
 
 ---
 
-## Getting Started
+## Getting Started & Installation
 
 ### Prerequisites
 
-Make sure the following is installed:
-
-* **Python 3.12 or higher**
+* Python 3.12 or higher
 * `pip`
 * Git
-
----
-
-## Installation
 
 ### Step 1: Clone the Repository
 
@@ -82,218 +64,128 @@ cd docu3c-depo-index-engine
 
 ### Step 2: Install Dependencies
 
-Install all required Python libraries specified in `requirements.txt`:
-
 ```bash
 pip install -r requirements.txt
 ```
 
-### Step 3: Run the End-to-End Pipeline
+### Step 3: Run the Pipeline
 
-Execute the root automation script:
+Execute the root automation script to run the end-to-end pipeline and generate all required outputs:
 
 ```bash
 python main.py
 ```
 
-The pipeline will:
-
-1. Parse the deposition PDF.
-2. Extract and clean the transcript text.
-3. Preserve page and line-level provenance.
-4. Create overlapping text chunks.
-5. Generate local vector embeddings.
-6. Store embeddings in ChromaDB.
-7. Detect chronological topic boundaries.
-8. Generate the topic index.
-9. Export the JSON topic index.
-10. Generate the human-readable Markdown report.
-11. Run three stability test executions.
-12. Generate the validation and manual review report.
-
-All generated artifacts and databases are stored inside:
-
-```text
-./outputs/
-```
+All generated files and databases will be stored inside the `./outputs/` directory.
 
 ---
 
-## Deliverables & Output Verification
+## Deliverables & Outputs
 
-After successfully running the pipeline, the following deliverables will be generated.
+1. **JSON Topic Index**
+   `./outputs/topic_index.json`
 
-### 1. JSON Topic Index
+2. **Markdown Report**
+   `./outputs/topic_index_report.md`
 
-```text
-./outputs/topic_index.json
-```
+3. **Validation & Stability Report**
+   `./outputs/validation_report.md`
 
-Contains the final chronological topic index in a structured, machine-readable format.
-
-### 2. Human-Readable Markdown Report
-
-```text
-./outputs/topic_index_report.md
-```
-
-Contains an attorney-facing representation of the indexed deposition topics, including their source provenance.
-
-### 3. Validation & Stability Report
-
-```text
-./outputs/validation_report.md
-```
-
-Contains:
-
-* 20-entry manual review evaluation
-* Evaluation methodology
-* Three-run stability test results
-* Failure analysis
-* Reliability observations
-* Validation outcomes
-
-### 4. Stability Test Outputs
-
-```text
-./outputs/topic_index_run_1.json
-./outputs/topic_index_run_2.json
-./outputs/topic_index_run_3.json
-```
-
-These files contain the outputs from three independent pipeline executions and are used to evaluate output stability and consistency.
+4. **Stability Run Outputs**
+   `./outputs/topic_index_run_1.json`
+   `./outputs/topic_index_run_2.json`
+   `./outputs/topic_index_run_3.json`
 
 ---
 
-## Source Provenance
+## Engineering Discipline & Git History
 
-A core design goal of DepoIndex is maintaining **traceability between generated topics and the original deposition transcript**.
+* **Earlier Reference Commit**: `0b6b0dd`
+* **Final Submission Commit**: The final commit SHA generated after the README is committed and pushed.
 
-Each indexed topic preserves source information such as:
+### Commit Evolution Summary
 
-* PDF page number
-* Transcript line range
-* Source text/chunk reference
-* Chronological position
+* **Earlier Commit**: Implemented the foundational PDF text parsing and modular project structure.
+* **Final Commit**: Completed the end-to-end pipeline automation, local vector indexing, chronological topic segmentation, report generation, and stability testing.
 
-This allows users to move from a generated topic directly back to the relevant portion of the original deposition.
+---
 
-The provenance pipeline follows this general flow:
+## Technology Stack
 
-```text
-Original PDF
-     │
-     ▼
-PDF Text Extraction
-     │
-     ▼
-Page & Line Preservation
-     │
-     ▼
-Text Cleaning
-     │
-     ▼
-Overlapping Chunking
-     │
-     ▼
-Local Embeddings
-     │
-     ▼
-ChromaDB
-     │
-     ▼
-Topic Segmentation
-     │
-     ▼
-Chronological Topic Index
-     │
-     ├───────────────┐
-     ▼               ▼
-JSON Output      Markdown Report
-     │
-     ▼
-Validation & Stability Testing
-```
+| Component       | Technology                     |
+| --------------- | ------------------------------ |
+| Language        | Python 3.12+                   |
+| Embeddings      | Sentence Transformers          |
+| Embedding Model | `all-MiniLM-L6-v2`             |
+| Vector Database | ChromaDB                       |
+| Output Formats  | JSON / Markdown                |
+| Architecture    | Local RAG Pipeline             |
+| Testing         | Stability & Evaluation Testing |
 
 ---
 
 ## Local RAG Architecture
 
-DepoIndex follows a local-first Retrieval-Augmented Generation architecture.
-
-### Embedding Model
-
-The project uses:
+The pipeline uses a local Retrieval-Augmented Generation architecture:
 
 ```text
-sentence-transformers/all-MiniLM-L6-v2
+Deposition PDF
+      │
+      ▼
+PDF Text Extraction
+      │
+      ▼
+Text Cleaning & Provenance
+      │
+      ▼
+Overlapping Chunking
+      │
+      ▼
+Local Sentence Embeddings
+      │
+      ▼
+ChromaDB Vector Store
+      │
+      ▼
+Chronological Topic Segmentation
+      │
+      ▼
+Topic Index
+      │
+      ├───────────────┐
+      ▼               ▼
+   JSON Output    Markdown Report
+      │
+      ▼
+Validation & Stability Testing
 ```
 
-for generating vector representations of deposition transcript chunks.
-
-### Vector Database
-
-The generated embeddings are stored in:
-
-```text
-ChromaDB
-```
-
-with persistent local storage under:
-
-```text
-./outputs/chroma_db/
-```
-
-### Benefits
-
-The local architecture provides:
-
-* No paid API keys
-* No external cloud dependency
-* Reproducible local execution
-* Better control over sensitive legal documents
-* Persistent vector storage
-* Easier evaluation and testing
+The local architecture avoids dependency on paid external APIs and provides greater control over sensitive legal documents.
 
 ---
 
-## Topic Segmentation
+## Source Provenance
 
-The segmentation engine is designed to identify meaningful changes in deposition subject matter while preserving the original chronological order.
+DepoIndex is designed to preserve traceability between generated topics and the original deposition transcript.
 
-Rather than producing an unordered collection of topics, DepoIndex maintains the sequence in which topics occur in the deposition.
+The indexing pipeline maintains source information including:
 
-The resulting structure is conceptually:
+* PDF page numbers
+* Transcript line ranges
+* Source text/chunk references
+* Chronological position
 
-```text
-Topic 1
-  ├── Page / Line Provenance
-  └── Relevant Transcript Content
-
-Topic 2
-  ├── Page / Line Provenance
-  └── Relevant Transcript Content
-
-Topic 3
-  ├── Page / Line Provenance
-  └── Relevant Transcript Content
-
-...
-```
-
-This makes the generated index useful for reviewing long deposition transcripts efficiently.
+This allows each indexed topic to be traced back to its corresponding location in the original deposition transcript.
 
 ---
 
 ## Validation & Stability Testing
 
-DepoIndex includes an automated validation framework to evaluate the consistency of the pipeline.
+The project includes automated validation to evaluate pipeline consistency and output stability.
 
-### Three-Run Stability Test
+### Three-Run Stability Testing
 
-The complete pipeline is executed three times and produces:
+The pipeline generates three independent outputs:
 
 ```text
 topic_index_run_1.json
@@ -301,19 +193,17 @@ topic_index_run_2.json
 topic_index_run_3.json
 ```
 
-The outputs are compared to identify:
+These outputs are used to evaluate consistency in:
 
-* Topic ordering changes
-* Topic boundary changes
-* Provenance inconsistencies
-* Missing entries
-* Unexpected output variations
+* Topic ordering
+* Topic boundaries
+* Source provenance
+* Missing or unexpected entries
+* Overall output stability
 
-### 20-Entry Manual Review
+### Manual Evaluation
 
-The project also includes a 20-entry manual evaluation table.
-
-The review focuses on factors such as:
+A dedicated evaluation table is included to review generated topic-index entries for:
 
 * Topic correctness
 * Chronological ordering
@@ -321,7 +211,7 @@ The review focuses on factors such as:
 * Topic boundary quality
 * Relevance of indexed content
 
-The resulting evaluation is incorporated into:
+The results are documented in:
 
 ```text
 ./outputs/validation_report.md
@@ -329,60 +219,23 @@ The resulting evaluation is incorporated into:
 
 ---
 
-## Engineering Discipline & Git History
+## AI Usage Documentation
 
-The project was developed incrementally to maintain clear engineering evolution and demonstrate the progression from the foundational RAG pipeline to the final validated topic-indexing system.
-
-### Earlier Reference Commit
+Details regarding AI tools, prompts, development assistance, and validation are documented in:
 
 ```text
-7023086
+llm_usage.md
 ```
 
-The earlier version implemented the foundational components:
+---
 
-* PDF text extraction
-* Text cleaning
-* Overlapping chunking
-* Persistent local ChromaDB vector indexing
+## Privacy & Security
 
-### Final Submission Commit
+DepoIndex follows a **local-first approach** for processing deposition material.
 
-```text
-5429c1b
-```
+The core pipeline does not require sending deposition transcripts to external AI APIs. Embeddings and vector storage are generated locally using Sentence Transformers and ChromaDB.
 
-The final version integrated:
-
-* Chronological topic boundary segmentation
-* Topic index generation
-* JSON exporting
-* Markdown exporting
-* Three-run automated stability testing
-* 20-entry manual validation review
-* Failure analysis reporting
-
-### Commit Evolution Summary
-
-```text
-Earlier Commit: 7023086
-      │
-      ├── PDF extraction
-      ├── Text cleaning
-      ├── Overlapping chunking
-      └── ChromaDB indexing
-      │
-      ▼
-Final Commit: 5429c1b
-      │
-      ├── Topic segmentation
-      ├── Chronological indexing
-      ├── JSON exporter
-      ├── Markdown exporter
-      ├── Stability testing
-      ├── Manual evaluation
-      └── Validation reporting
-```
+This approach provides greater control over sensitive legal-document processing and reduces reliance on external services.
 
 ---
 
@@ -409,56 +262,22 @@ outputs/
 
 ---
 
-## Technology Stack
-
-| Component       | Technology                              |
-| --------------- | --------------------------------------- |
-| Language        | Python 3.12+                            |
-| PDF Processing  | Python PDF extraction libraries         |
-| Embeddings      | Sentence Transformers                   |
-| Embedding Model | `all-MiniLM-L6-v2`                      |
-| Vector Database | ChromaDB                                |
-| Output Format   | JSON / Markdown                         |
-| Testing         | Automated stability + manual evaluation |
-| Architecture    | Local RAG Pipeline                      |
-
----
-
-## Privacy & Security
-
-DepoIndex is designed with a **local-first approach** for processing sensitive deposition material.
-
-The core pipeline does not require sending deposition transcripts to external AI APIs. Embeddings and vector storage are generated locally using the configured Sentence Transformers model and ChromaDB.
-
-This architecture is particularly suitable for workflows where document confidentiality and local data control are important.
-
----
-
-## AI Usage Documentation
-
-Details regarding the use of AI tools, prompts, development assistance, and validation are documented separately in:
-
-```text
-llm_usage.md
-```
-
----
-
 ## Conclusion
 
-DepoIndex provides an end-to-end solution for converting lengthy legal deposition transcripts into a structured, chronological, and verifiable topic index.
+DepoIndex provides an end-to-end pipeline for converting lengthy legal deposition transcripts into a structured, chronological, and verifiable topic index.
 
-Its combination of:
+The project combines:
 
 * Local RAG infrastructure
+* Modular Python architecture
 * Strict source provenance
 * Chronological topic segmentation
 * Structured JSON output
 * Human-readable Markdown reporting
 * Automated stability testing
-* Manual validation
+* Manual evaluation
 
-creates a reproducible pipeline suitable for professional legal-document analysis and evaluation.
+to provide a reproducible solution for legal deposition document analysis.
 
 ---
 

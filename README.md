@@ -333,4 +333,137 @@ The resulting evaluation is incorporated into:
 
 ## Engineering Discipline & Git History
 
-The project was d
+The project was developed incrementally to maintain clear engineering evolution.
+
+### Earlier Reference Commit
+
+```text
+[Insert Earlier Commit SHA Here]
+```
+
+The earlier version implemented the foundational components:
+
+* PDF text extraction
+* Text cleaning
+* Overlapping chunking
+* Persistent local ChromaDB vector indexing
+
+### Final Submission Commit
+
+```text
+[Insert Final Commit SHA Here]
+```
+
+The final version integrated:
+
+* Chronological topic boundary segmentation
+* Topic index generation
+* Markdown exporting
+* JSON exporting
+* Three-run automated stability testing
+* 20-entry manual validation review
+* Failure analysis reporting
+
+### Commit Evolution Summary
+
+```text
+Earlier Commit
+      │
+      ├── PDF extraction
+      ├── Text cleaning
+      ├── Overlapping chunking
+      └── ChromaDB indexing
+      │
+      ▼
+Final Commit
+      │
+      ├── Topic segmentation
+      ├── Chronological indexing
+      ├── JSON exporter
+      ├── Markdown exporter
+      ├── Stability testing
+      ├── Manual evaluation
+      └── Validation reporting
+```
+
+---
+
+## Running the Project
+
+From the repository root:
+
+```bash
+python main.py
+```
+
+Expected output structure:
+
+```text
+outputs/
+├── chroma_db/
+├── topic_index.json
+├── topic_index_report.md
+├── topic_index_run_1.json
+├── topic_index_run_2.json
+├── topic_index_run_3.json
+└── validation_report.md
+```
+
+---
+
+## Technology Stack
+
+| Component       | Technology                              |
+| --------------- | --------------------------------------- |
+| Language        | Python 3.12+                            |
+| PDF Processing  | Python PDF extraction libraries         |
+| Embeddings      | Sentence Transformers                   |
+| Embedding Model | `all-MiniLM-L6-v2`                      |
+| Vector Database | ChromaDB                                |
+| Output Format   | JSON / Markdown                         |
+| Testing         | Automated stability + manual evaluation |
+| Architecture    | Local RAG Pipeline                      |
+
+---
+
+## Privacy & Security
+
+DepoIndex is designed with a **local-first approach** for processing sensitive deposition material.
+
+The core pipeline does not require sending deposition transcripts to external AI APIs. Embeddings and vector storage are generated locally using the configured Sentence Transformers model and ChromaDB.
+
+This architecture is particularly suitable for workflows where document confidentiality and local data control are important.
+
+---
+
+## AI Usage Documentation
+
+Details regarding the use of AI tools, prompts, development assistance, and validation are documented separately in:
+
+```text
+llm_usage.md
+```
+
+---
+
+## Conclusion
+
+DepoIndex provides an end-to-end solution for converting lengthy legal deposition transcripts into a structured, chronological, and verifiable topic index.
+
+Its combination of:
+
+* Local RAG infrastructure
+* Strict source provenance
+* Chronological topic segmentation
+* Structured JSON output
+* Human-readable Markdown reporting
+* Automated stability testing
+* Manual validation
+
+creates a reproducible pipeline suitable for professional legal-document analysis and evaluation.
+
+---
+
+**Project:** DepoIndex
+**Assessment:** Docu3C Technical Assessment — Problem #3
+**Status:** Final Submission

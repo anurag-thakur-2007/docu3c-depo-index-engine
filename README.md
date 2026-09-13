@@ -201,12 +201,13 @@ The repository reflects an incremental development methodology:
 
 * **Earlier Reference Commit**: `0b6b0dd` — *"feat: implement PDF text parser in src/parser.py"*
   - Established the foundational PDF text extraction and basic project directory scaffolding.
-* **Final Submission Commit**: `7399637` — *"docs: update README with final submission commit SHA"* (incorporating `b19768a` core implementation)
+* **Core Implementation Commit**: `b19768a` — *"feat: implement true line-level provenance, 21-topic segmentation, 3-run stability, 20-entry manual audit, and semantic search"*
   - Implemented true line-level PDF parsing (lines 1–25, Pages 7–88).
   - Built persistent vector storage in ChromaDB using `SentenceTransformers`.
   - Implemented 21 chronological legal topics with exact line-level start/end locations and verbatim evidence.
   - Added 3-run deterministic stability validation and an authentic 20-entry manual evaluation audit.
   - Integrated the bonus semantic search feature into the Streamlit application.
+* **Final Documentation & Submission Commit**: `HEAD` (`b19768a` onwards)
 
 ---
 

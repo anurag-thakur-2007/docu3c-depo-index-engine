@@ -1,64 +1,72 @@
+"""
+Deposition Vector Indexer
+Ingests parsed transcript blocks, computes local sentence embeddings using
+SentenceTransformers, and stores them in ChromaDB with exact line-level metadata.
+"""
+
 import os
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_community.embeddings import HuggingFaceEmbeddings
+import sys
+
+# Ensure root directory is on Python path
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import chromadb
-from src.parser import extract_pdf_text
+from sentence_transformers import SentenceTransformer
+from src.parser import extract_deposition_lines, group_lines_into_blocks
 
-def build_vector_index(pdf_path: str, persist_directory: str = "./outputs/chroma_db"):
-    """Parses a PDF, chunks the text, embeds it locally, and saves it to ChromaDB."""
-    print(f"Step 1: Extracting text from {pdf_path}...")
-    raw_text = extract_pdf_text(pdf_path)
-    print(f"Extracted {len(raw_text)} characters successfully.")
 
-    print("Step 2: Splitting text into overlapping chunks...")
-    text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=1000,
-        chunk_overlap=200,
-        separators=["\n\n", "\n", " ", ""]
-    )
-    docs = text_splitter.create_documents([raw_text])
-    print(f"Created {len(docs)} text chunks.")
+def build_vector_index(pdf_path: str = None, persist_directory: str = "./outputs/chroma_db"):
+    """
+    Parses substantive deposition testimony, groups into blocks with line-level provenance,
+    generates embeddings with all-MiniLM-L6-v2, and indexes into ChromaDB.
+    """
+    if pdf_path is None:
+        pdf_path = os.path.join("data", "Persis_Yu_Deposition_Problem_statement.pdf")
 
-    print("Step 3: Initializing local Hugging Face embedding model...")
-    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+    print(f"[Indexer] Step 1: Parsing deposition lines from {pdf_path}...")
+    lines = extract_deposition_lines(pdf_path)
+    blocks = group_lines_into_blocks(lines, block_size=25)
+    print(f"[Indexer] Extracted {len(lines)} lines and created {len(blocks)} transcript blocks.")
 
-    print(f"Step 4: Storing embeddings into ChromaDB at '{persist_directory}'...")
+    print("[Indexer] Step 2: Loading local SentenceTransformer model (all-MiniLM-L6-v2)...")
+    embedder = SentenceTransformer("all-MiniLM-L6-v2")
+
+    print(f"[Indexer] Step 3: Initializing persistent ChromaDB at {persist_directory}...")
+    os.makedirs(persist_directory, exist_ok=True)
     client = chromadb.PersistentClient(path=persist_directory)
-    
-    # Create or reset collection
-    collection_name = "deposition_index"
+
+    collection_name = "deposition_blocks"
     try:
         client.delete_collection(name=collection_name)
     except Exception:
         pass
-        
+
     collection = client.create_collection(name=collection_name)
 
-    # Extract text content and metadata
-    texts = [doc.page_content for doc in docs]
-    metadatas = [{"chunk_id": i} for i in range(len(docs))]
-    ids = [f"chunk_{i}" for i in range(len(docs))]
+    texts = [b["text"] for b in blocks]
+    ids = [f"block_{b['block_id']}" for b in blocks]
+    metadatas = [{
+        "block_id": b["block_id"],
+        "start_page": b["start_page"],
+        "start_line": b["start_line"],
+        "end_page": b["end_page"],
+        "end_line": b["end_line"],
+        "location": f"Page {b['start_page']}, Line {b['start_line']} - Page {b['end_page']}, Line {b['end_line']}"
+    } for b in blocks]
 
-    # Generate embeddings and add to collection in batches to manage memory
-    batch_size = 100
-    for i in range(0, len(texts), batch_size):
-        batch_texts = texts[i:i+batch_size]
-        batch_metadatas = metadatas[i:i+batch_size]
-        batch_ids = ids[i:i+batch_size]
-        
-        batch_embeddings = embeddings.embed_documents(batch_texts)
-        
-        collection.add(
-            documents=batch_texts,
-            embeddings=batch_embeddings,
-            metadatas=batch_metadatas,
-            ids=batch_ids
-        )
-        print(f"Indexed batch {i//batch_size + 1} / {(len(texts) + batch_size - 1)//batch_size}")
+    print("[Indexer] Step 4: Computing embeddings and populating vector store...")
+    embeddings = embedder.encode(texts, show_progress_bar=False).tolist()
 
-    print("Vector indexing complete! Database persisted successfully.")
-    return collection
+    collection.add(
+        documents=texts,
+        embeddings=embeddings,
+        metadatas=metadatas,
+        ids=ids
+    )
+
+    print(f"[Indexer] Successfully indexed {len(blocks)} blocks into ChromaDB!")
+    return collection, blocks
+
 
 if __name__ == "__main__":
-    target_pdf = os.path.join("data", "Persis_Yu_Deposition_Problem_statement.pdf")
-    build_vector_index(target_pdf)
+    build_vector_index()

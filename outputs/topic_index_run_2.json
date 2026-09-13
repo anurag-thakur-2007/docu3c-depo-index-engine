@@ -1,32 +1,128 @@
 [
     {
-        "topic": "Personal Background & Education",
-        "start_location": "Page 1, Line 1",
-        "end_location": "Page 16, Line 30",
-        "supporting_evidence": "--- Page 1 --- DEPOSITION OF PERSIS YU Administrative information redacted Substantive testimony begins on the original transcript pages.  --- Page 2 ..."
+        "topic": "Deposition Admonitions & Deposition Ground Rules",
+        "start_location": "Page 7, Line 11",
+        "end_location": "Page 11, Line 11",
+        "supporting_evidence": "BY MR. PURCELL: Q Good afternoon, Ms. Yu. My name's John Purcell. I represent the defendants, and we will hopefully get you out of here fairly soon. At the beginning of a deposition, I always make sure that somebody..."
     },
     {
-        "topic": "Employment History & Responsibilities",
-        "start_location": "Page 16, Line 16",
-        "end_location": "Page 42, Line 30",
-        "supporting_evidence": "12   I mean, basically, data is lost is -- is the main risk.      01:37 13            Also, there is often confusion amongst borrowers    01:37 14   a..."
+        "topic": "Scope of Expert Retention & Report Exhibit 1",
+        "start_location": "Page 11, Line 12",
+        "end_location": "Page 14, Line 11",
+        "supporting_evidence": "different part of your report, let me know. But also, since you have it in front of you, I assume you'll be able to kind of work around that pretty well. So I'm -- I'm just going to go do a little bit of \"this is your..."
     },
     {
-        "topic": "Core Subject Matter & Events Discussed",
-        "start_location": "Page 42, Line 16",
-        "end_location": "Page 79, Line 15",
-        "supporting_evidence": "12            So certainly, within the loans -- within the loan   02:27 13   documents that I have examined, there are questions about    02:28 14   t..."
+        "topic": "Educational Background & National Consumer Law Center Role",
+        "start_location": "Page 14, Line 12",
+        "end_location": "Page 18, Line 11",
+        "supporting_evidence": "Q Thank you. Have you passed any of these regulations? A So -- so I guess that's a broad question, but yes, we have been successful in a number of our initiatives. Q Which ones have been successful? A Well, I..."
     },
     {
-        "topic": "Communications & Document Review",
-        "start_location": "Page 79, Line 1",
-        "end_location": "Page 94, Line 30",
-        "supporting_evidence": "--- Page 85 --- 1   governmental agency making any determination that the        03:34 2   PEAKS loans were unenforceable prior to the fall of 2020;  ..."
+        "topic": "Department of Education Negotiated Rulemaking & Congressional Testimony",
+        "start_location": "Page 18, Line 12",
+        "end_location": "Page 22, Line 11",
+        "supporting_evidence": "the expertise that I've -- that I've worked on and gained to learn about the student loan market. Q And when did you start learning about the student loan market? A I started working in this field in 2009 as a lega..."
     },
     {
-        "topic": "Concluding Remarks & Deposition Closing",
-        "start_location": "Page 94, Line 16",
-        "end_location": "Page 104, Line 45",
-        "supporting_evidence": "--- Page 107 --- 44:16,19,23 45:9,20,25 46:7 46:13,17,18,24 47:7,10,15,17 47:24 48:4,6,10 48:12,14,20,24 49:8,14,17,20 49:22,22,24 50:3,22 53:14 53:22..."
+        "topic": "Prior Expert Witness Retentions & Applicable Legal Frameworks",
+        "start_location": "Page 22, Line 12",
+        "end_location": "Page 26, Line 11",
+        "supporting_evidence": "I mean, basically, data is lost is -- is the main risk. Also, there is often confusion amongst borrowers about where to make payments, what they need to -- who they need to interface with, as it is often quite opaque to..."
+    },
+    {
+        "topic": "Review of Case Documents, Complaint & ITT Educational Value",
+        "start_location": "Page 26, Line 12",
+        "end_location": "Page 30, Line 11",
+        "supporting_evidence": "issue? A This was -- that was outside the scope of my report. Q Go down to -- I'm going to go back into your report. So I'm here -- there's paragraph 8 here. You see we're on page 2? And after paragraph 8 we no..."
+    },
+    {
+        "topic": "Analysis of ITT Student Retention & Institutional Quality Metrics",
+        "start_location": "Page 30, Line 12",
+        "end_location": "Page 34, Line 11",
+        "supporting_evidence": "getting degrees as opposed to those who did not get degrees? A If you'll -- I -- I'm going to refer to my report because I believe that I have this date. I believe -- the Senate HELP Committee looked specifically at..."
+    },
+    {
+        "topic": "PEAKS Private Student Loan Program & Subprime Structure",
+        "start_location": "Page 34, Line 12",
+        "end_location": "Page 38, Line 11",
+        "supporting_evidence": "A It is not the typical experience. The typical experience is that ITT was a -- was a notoriously bad institution that -- that used, you know, flagrant misrepresentations about the quality of education -- (Simultaneo..."
+    },
+    {
+        "topic": "Borrower Default Rates & Predictable Loan Failure",
+        "start_location": "Page 38, Line 12",
+        "end_location": "Page 42, Line 11",
+        "supporting_evidence": "degrees, if they completed at all. BY MR. PURCELL: Q Thank you. So if somebody did get a degree and then made twice as much, if not more, money after graduating than they were making prior to attending ITT, they would..."
+    },
+    {
+        "topic": "Vervent Role as Successor Servicer & Servicing Transition",
+        "start_location": "Page 42, Line 12",
+        "end_location": "Page 46, Line 11",
+        "supporting_evidence": "did not got involved with the PEAKS portfolio until very late in 2011, and that was after all of the PEAKS loans were originated? A Yes, I understand that. Q Okay. So based on your review of everything, the Verven..."
+    },
+    {
+        "topic": "CFPB Enforcement Actions & Regulatory Scrutiny on ITT",
+        "start_location": "Page 46, Line 12",
+        "end_location": "Page 50, Line 11",
+        "supporting_evidence": "Q There was an order in the 2016 ITT bankruptcy to stop collecting on the loans? That's your testimony? A Sorry. In my report I say that the ITT bankruptcy trustee instructed Vervent to cease and desist on the CUS..."
+    },
+    {
+        "topic": "California Student Loan Servicing Act Compliance & Disclosures",
+        "start_location": "Page 50, Line 12",
+        "end_location": "Page 54, Line 11",
+        "supporting_evidence": "Q Which pieces are those? A So I mean, the basic terms of the, you know -- so the -- the -- under the Truth in Lending Act, when the loan is originated there needs to be three separate pieces of information, and th..."
+    },
+    {
+        "topic": "Missing Loan Notes & Chain of Title Deficiencies",
+        "start_location": "Page 54, Line 12",
+        "end_location": "Page 58, Line 11",
+        "supporting_evidence": "never knew what the interest rates were on these loans? A That -- that -- that is not what I -- that is not what I said. Q Okay. So then you don't have any opinion on whether or not Vervent knew the interest rates..."
+    },
+    {
+        "topic": "Right to Cancel & Failure to Provide Required Disclosures",
+        "start_location": "Page 58, Line 12",
+        "end_location": "Page 62, Line 11",
+        "supporting_evidence": "time? Right away? A month into it? When -- when would they be unenforceable? A I mean, if no loan exists, then it can't -- like no loan could be -- could exist without the disclosures, and so you -- so I mean, I --..."
+    },
+    {
+        "topic": "Department of Education Role & History with Predatory Institutions",
+        "start_location": "Page 62, Line 12",
+        "end_location": "Page 66, Line 11",
+        "supporting_evidence": "reference some reports from 1999 up through 2005 relating to a certain aspect of -- of ITT and their -- their -- the way they conducted themselves. Do you see that? A Yes. Q All of this was public; correct? The --..."
+    },
+    {
+        "topic": "Civil Investigative Demands & CFPB Investigations into Servicers",
+        "start_location": "Page 66, Line 12",
+        "end_location": "Page 70, Line 11",
+        "supporting_evidence": "you know -- so there's a number of different factors that go into play here. But I think the purpose of what I'm describing is what was known to folks in the community who would have looked into ITT, who would have under..."
+    },
+    {
+        "topic": "Servicer Knowledge of PEAKS Loan Fraud & Unenforceability",
+        "start_location": "Page 70, Line 12",
+        "end_location": "Page 74, Line 11",
+        "supporting_evidence": "THE WITNESS: I'm sorry, I didn't hear that. BY MR. PURCELL: Q Yes. As you sit here today, you can't think of anything that the SEC took issue with with respect to the Vervent defendants? MR. BLOOD: Calls for specula..."
+    },
+    {
+        "topic": "Department of Education and CFPB Servicer Oversight Comparison",
+        "start_location": "Page 74, Line 12",
+        "end_location": "Page 78, Line 11",
+        "supporting_evidence": "A My understanding of those investigations is they were focused on the practices of ITT. Q So there was no findings, to your knowledge, that Vervent did anything wrong? A To -- to my knowledge, their findings we..."
+    },
+    {
+        "topic": "Standard of Care & Servicer Duty to Cease Servicing Invalid Loans",
+        "start_location": "Page 78, Line 12",
+        "end_location": "Page 82, Line 11",
+        "supporting_evidence": "Usually, there is some activity which leads to an investigation. BY MR. PURCELL: Q Okay. But the fact that an investigation occurs does not by itself mean that wrongdoing has occurred; correct? A That is why an in..."
+    },
+    {
+        "topic": "Borrower Harm & Adverse Credit Reporting from Continued Collections",
+        "start_location": "Page 82, Line 12",
+        "end_location": "Page 86, Line 11",
+        "supporting_evidence": "that the loans were unenforceable. There was, of course, the settlement between the loan -- between the CFPB and the PEAKS loan trust which -- which resulted in the cancelation of the loans which means that they, you kn..."
+    },
+    {
+        "topic": "Concluding Cross-Examination & Deposition Adjournment",
+        "start_location": "Page 86, Line 12",
+        "end_location": "Page 88, Line 20",
+        "supporting_evidence": "at the outset, at their origination, because they lacked the requisite disclosures in order to be viable enforceable loans; is that correct? A Right. That if the -- that if the requisite -- I mean, the documents are..."
     }
 ]

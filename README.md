@@ -201,7 +201,7 @@ The repository reflects an incremental development methodology:
 
 * **Earlier Reference Commit**: `0b6b0dd` — *"feat: implement PDF text parser in src/parser.py"*
   - Established the foundational PDF text extraction and basic project directory scaffolding.
-* **Final Submission Commit**: `690bb3a` (or latest `HEAD`) — *"Refactor DepoIndex engine for 100% Task #3 alignment"*
+* **Final Submission Commit**: `7399637` — *"docs: update README with final submission commit SHA"* (incorporating `b19768a` core implementation)
   - Implemented true line-level PDF parsing (lines 1–25, Pages 7–88).
   - Built persistent vector storage in ChromaDB using `SentenceTransformers`.
   - Implemented 21 chronological legal topics with exact line-level start/end locations and verbatim evidence.

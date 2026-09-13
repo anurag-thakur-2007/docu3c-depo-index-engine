@@ -8,7 +8,11 @@ import os
 import json
 import streamlit as st
 import chromadb
-from sentence_transformers import SentenceTransformer
+
+@st.cache_resource
+def get_embedder():
+    from sentence_transformers import SentenceTransformer
+    return SentenceTransformer("all-MiniLM-L6-v2")
 
 # Page setup
 st.set_page_config(
@@ -104,7 +108,7 @@ with tab_search:
             with st.spinner("Searching deposition embeddings in ChromaDB..."):
                 client = chromadb.PersistentClient(path=chroma_dir)
                 collection = client.get_collection(name="deposition_blocks")
-                embedder = SentenceTransformer("all-MiniLM-L6-v2")
+                embedder = get_embedder()
                 query_vector = embedder.encode([search_query]).tolist()
 
                 results = collection.query(
